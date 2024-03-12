@@ -4,26 +4,123 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: #383838; /* Warna abu-abu hitam */
+            color: #ffffff; /* Warna teks putih */
+            font-family: Arial, sans-serif; /* Font family */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh; /* Menggunakan min-height agar konten tetap berada di tengah vertikal */
+        }
+        
+        .container {
+            width: 90%; /* Mengurangi lebar kontainer agar sesuai dengan layar ponsel */
+            max-width: 600px; /* Lebar maksimum container */
+            text-align: center;
+        }
+        
+        .link ul {
+            list-style-type: none; /* Menghilangkan bullet points */
+            padding: 0;
+            margin: 0;
+        }
+        
+        .link li {
+            margin-bottom: 10px;
+            transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang */
+        }
+        
+        .link li:hover {
+            background-color: #4a4a4a; /* Warna latar belakang saat hover pada li */
+            border-radius: 5px; /* Membuat sudut li menjadi melengkung saat hover */
+        }
+        
+        .link a {
+            text-decoration: none; /* Menghilangkan garis bawah pada link */
+            color: #ffffff; /* Warna teks putih untuk link */
+            display: block;
+            padding: 10px 20px;
+            border-radius: 5px; /* Membuat sudut link menjadi melengkung */
+        }
+        
+        .link a:hover {
+            text-decoration: underline; /* Menampilkan garis bawah saat hover pada link */
+        }
+        .link input[type="text"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-right: 10px;
+            width: calc(100% - 80px); /* Menyesuaikan lebar input pada layar ponsel */
+        }
+        
+        .link input[type="submit"] {
+            background-color: #4a4a4a; /* Warna latar belakang tombol */
+            color: #ffffff; /* Warna teks putih untuk tombol */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px; /* Membuat sudut tombol menjadi melengkung */
+            cursor: pointer;
+            transition: background-color 0.3s ease; /* Animasi perubahan warna latar belakang */
+        }
+        
+        .link input[type="submit"]:hover {
+            background-color: #666666; /* Warna latar belakang saat hover pada tombol */
+        }
+
+        .hidden {
+            display: none; /* Menyembunyikan elemen */
+        }
+    
+    </style>
 </head>
 <body>
-    <div class="link">
-        <ul>
-            <li>
-                <a href="nugra21/index.html">nugra21</a>
-            </li>
-
-            <li>
-                <a href="itzice/index.html">ItzIceFx</a>
-            </li>
-
-            <li>
-                <a href="haikal/index.html">hiakel</a>
-            </li>
-
-            <li>
-                <a href="xipkun/index.html">xipkun</a>
-            </li>
-        <ul>
+    <div class="container">
+        <div class="link">
+            <ul>
+                <li>
+                    <a href="#" onclick="showPasswordForm('nugra21/index.html')">nugra21</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPasswordForm('itzice/index.html')">ItzIceFx</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPasswordForm('haikal/index.html')">hiakel</a>
+                </li>
+                <li>
+                    <a href="#" onclick="showPasswordForm('xipkun/index.html')">xipkun</a>
+                </li>
+            </ul>
+            <form id="passwordForm" class="hidden" onsubmit="return checkPassword()">
+                <input type="text" id="password"  required> 
+                <input type="submit" value="Submit">
+                Pasword : n21 
+            </form>
+        </div>
     </div>
+
+    <script>
+        function showPasswordForm(url) {
+            document.getElementById("passwordForm").classList.remove("hidden");
+            document.getElementById("passwordForm").setAttribute("data-url", url);
+        }
+
+        function checkPassword() {
+            var password = document.getElementById("password").value;
+            var url = document.getElementById("passwordForm").getAttribute("data-url");
+
+            if (password === "n21") {
+                window.location.href = url;
+                return false;
+            } else {
+                alert("Password salah!");
+                return false;
+            }
+        }
+    </script>
 </body>
 </html>
