@@ -7,7 +7,7 @@
 //---------------------------------------//
 
 //------------------------  Form Alert 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwymc5Ky1gkA8lNCNy7CVZJk8WPrCfUfZvB71mv4t7IB1icybEa4dnRrRtPXV37g-Y-/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbzwoCwgYW1Mcr8m1xIKHxLBjSJndYw3Y4seN--C3gMYTEBkHS3hEDBWx8t6A6YXyfXEHg/exec'
 
 const form = document.forms['contact-form']
 

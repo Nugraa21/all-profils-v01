@@ -119,7 +119,7 @@ for (let i = 0; i < filterBtn.length; i++) {
 const form = document.querySelector("[data-form]");
 const formInputs = document.querySelectorAll("[data-form-input]");
 const formBtn = document.querySelector("[data-form-btn]");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwymc5Ky1gkA8lNCNy7CVZJk8WPrCfUfZvB71mv4t7IB1icybEa4dnRrRtPXV37g-Y-/exec'
+const scriptURL = 'https://script.google.com/macros/s/AKfycbz5VPjX6CG4WbXmEdoSb5aQU-Put1IN0pw17xkOA5k8-mgp3mKJM4Arb2GjycGaDlmQ4g/exec'
 
 
 // add event to all form input field
