@@ -113,45 +113,61 @@ for (let i = 0; i < filterBtn.length; i++) {
 
 }
 
+    // contact form variables
+    const form = document.querySelector("[data-form]");
+    const formInputs = document.querySelectorAll("[data-form-input]");
+    const formBtn = document.querySelector("[data-form-btn]");
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzwoCwgYW1Mcr8m1xIKHxLBjSJndYw3Y4seN--C3gMYTEBkHS3hEDBWx8t6A6YXyfXEHg/exec';
 
+    // add event to all form input field
+    for (let i = 0; i < formInputs.length; i++) {
+      formInputs[i].addEventListener("input", function () {
 
-// contact form variables
-const form = document.querySelector("[data-form]");
-const formInputs = document.querySelectorAll("[data-form-input]");
-const formBtn = document.querySelector("[data-form-btn]");
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzwoCwgYW1Mcr8m1xIKHxLBjSJndYw3Y4seN--C3gMYTEBkHS3hEDBWx8t6A6YXyfXEHg/exec'
+        // check form validation
+        if (form.checkValidity()) {
+          formBtn.removeAttribute("disabled");
+        } else {
+          formBtn.setAttribute("disabled", "");
+        }
 
-
-// add event to all form input field
-for (let i = 0; i < formInputs.length; i++) {
-  formInputs[i].addEventListener("input", function () {
-
-    // check form validation
-    if (form.checkValidity()) {
-      formBtn.removeAttribute("disabled");
-    } else {
-      formBtn.setAttribute("disabled", "");
+      });
     }
 
-  });
-}
+    // add event listener for form submission
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
 
-// add event listener for form submission
-form.addEventListener('submit', function (e) {
-  e.preventDefault();
+      // your existing fetch logic
+      fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+        .then(response => {
+          // Construct WhatsApp message URL with form data
+          const formData = new FormData(form);
+          const user = formData.get('Nama');
+          const nama = formData.get('nama');
+          const email = formData.get('Email');
+          const bayar = formData.get('bayar');
+          const warna = formData.get('warna');
+          const music = formData.get('music');
+          const style = formData.get('style');
+          const whatsappMessage = `
+          Pesan intro   
+          Nama Pemesan: ${user}  
+          Email: ${email}
+          -- 
+          Nama: ${nama}  
+          Warna: ${warna}
+          Music: ${music}
+          Style Intro: ${style}
+          --
+          Bayar: Rp ${bayar}
+          --`;
+          const whatsappURL = `https://wa.me/6285740993739?text=${encodeURIComponent(whatsappMessage)}`; // Use encodeURIComponent to encode the message
 
-  // your existing fetch logic
-  fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-    .then(response => {
-      // display alert when the form is successfully submitted
-      alert("Pesan telah terkirim (Berhasil dikirim) ..!!");
-      // reload the page
-      window.location.reload();
-    })
-    .catch(error => console.error('Error!', error.message));
-});
-
-
+          // Redirect to WhatsApp with the constructed URL
+          window.location.href = whatsappURL;
+        })
+        .catch(error => console.error('Error!', error.message));
+    });
 
 // page navigation variables
 const navigationLinks = document.querySelectorAll("[data-nav-link]");
