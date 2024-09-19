@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Basic reset and styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1em;
+  text-align: center;
+}
+
+article {
+  padding: 2em;
+}
+
+.h2 {
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
+
+/* Filter list and buttons */
+.filter-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2em;
+}
+
+.filter-item button {
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s;
+}
+
+.filter-item button.active {
+  background-color: #333;
+  color: white;
+}
+
+.filter-item button:hover {
+  background-color: #ddd;
+}
+
+/* Select box styling */
+.filter-select-box {
+  position: relative;
+  margin-bottom: 2em;
+}
+
+.filter-select {
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1em;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.select-value {
+  flex-grow: 1;
+}
+
+.select-icon {
+  font-size: 1.2em;
+}
+
+.select-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border: 1px solid #ccc;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  display: none;
+}
+
+.select-list .select-item {
+  padding: 0.5em 1em;
+}
+
+.select-list .select-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* Show the select list when clicked */
+.filter-select:focus + .select-list,
+.filter-select-box:hover .select-list {
+  display: block;
+}
+
+/* Project list styling */
+.project-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+}
+
+.project-item {
+  display: none;
+  flex: 1 1 30%;
+  border: 1px solid #ccc;
+  padding: 1em;
+  background-color: white;
+  transition: transform 0.3s;
+}
+
+.project-item.active {
+  display: block;
+}
+
+.project-img {
+  margin-bottom: 1em;
+}
+
+.project-title {
+  font-size: 1.2em;
+  margin: 0.5em 0;
+}
+
+.project-category {
+  color: #666;
+}
+
+/* Hover effect */
+.project-item:hover {
+  transform: scale(1.05);
+}
+
+    </style>
+</head>
+<body>
+    <article class="portfolio" data-page="desain intro">
+
+        <header>
+          <h2 class="h2 article-title">Intromaker</h2>
+        </header>
+    
+        <section class="projects">
+    
+          <!-- <ul class="filter-list">
+    
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+    
+            <li class="filter-item">
+              <button data-filter-btn>10.000</button>
+            </li>
+    
+            <li class="filter-item">
+              <button data-filter-btn>20.000</button>
+            </li>
+    
+            <li class="filter-item">
+              <button data-filter-btn>25.000</button>
+            </li>
+    
+          </ul> -->
+    
+          <div class="filter-select-box">
+    
+            <button class="filter-select" data-select>
+    
+              <div class="select-value" data-select-value>Select category</div>
+    
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+    
+            </button>
+    
+            <ul class="select-list">
+    
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+    
+              <li class="select-item">
+                <button data-select-item>10.000</button>
+              </li>
+    
+              <li class="select-item">
+                <button data-select-item>20.000</button>
+              </li>
+    
+              <li class="select-item">
+                <button data-select-item>25.000</button>
+              </li>
+    
+            </ul>
+    
+          </div>
+    
+          <ul class="project-list">
+            <!-- intro  -->
+            <li class="project-item active" data-filter-item data-category="25.000">
+              <figure class="project-img">
+                <video width="350" controls>
+                  <source src="../assets/images/intro/nugra21/25.000.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <h3 class="project-title">intro</h3>
+              <p class="project-category">25.000</p>
+            </li>
+            <!-- intro  -->
+            <li class="project-item active" data-filter-item data-category="25.000">
+              <figure class="project-img">
+                <video width="350" controls>
+                  <source src="../assets/images/intro/nugra21/gabut.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <h3 class="project-title">intro</h3>
+              <p class="project-category">25.000</p>
+            </li>
+            <!-- intro  -->
+            <li class="project-item active" data-filter-item data-category="10.000">
+              <figure class="project-img">
+                <video width="350" controls>
+                  <source src="../assets/images/intro/nugra21/10.000.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <h3 class="project-title">intro</h3>
+              <p class="project-category">10.000</p>
+            </li>
+            <!-- intro  -->
+            <li class="project-item active" data-filter-item data-category="20.000">
+              <figure class="project-img">
+                <video width="350" controls>
+                  <source src="../assets/images/intro/nugra21/20.000.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <h3 class="project-title">intro</h3>
+              <p class="project-category">20.000</p>
+            </li>
+            <!-- intro  -->
+            <li class="project-item active" data-filter-item data-category="10.000">
+              <figure class="project-img">
+                <video width="350" controls>
+                  <source src="../assets/images/intro/nugra21/mekjorik.mp4" type="video/mp4">
+                </video>
+              </figure>
+              <h3 class="project-title">intro</h3>
+              <p class="project-category">10.000</p>
+            </li>
+          </ul>
+    
+        </section>
+    
+    </article>
+<script>
+const filterBtn = document.querySelectorAll("[data-filter-btn]");
+const filterItems = document.querySelectorAll("[data-filter-item]");
+const selectValue = document.querySelector("[data-select-value]");
+const selectItems = document.querySelectorAll("[data-select-item]");
+
+const filterFunc = function (selectedValue) {
+  for (let i = 0; i < filterItems.length; i++) {
+    if (selectedValue === "all") {
+      filterItems[i].classList.add("active");
+    } else if (selectedValue === filterItems[i].dataset.category) {
+      filterItems[i].classList.add("active");
+    } else {
+      filterItems[i].classList.remove("active");
+    }
+  }
+}
+
+// Add event in all filter button items for large screen
+let lastClickedBtn = filterBtn[0];
+
+for (let i = 0; i < filterBtn.length; i++) {
+  filterBtn[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    filterFunc(selectedValue);
+    lastClickedBtn.classList.remove("active");
+    this.classList.add("active");
+    lastClickedBtn = this;
+  });
+}
+
+// Add event for select items
+for (let i = 0; i < selectItems.length; i++) {
+  selectItems[i].addEventListener("click", function () {
+    let selectedValue = this.innerText.toLowerCase();
+    selectValue.innerText = this.innerText;
+    filterFunc(selectedValue);
+  });
+}
+</script>
+</body>
+</html>
